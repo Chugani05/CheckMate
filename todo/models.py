@@ -5,7 +5,7 @@ class Task(models.Model):
     title = models.CharField(max_length=150)
     description = models.TextField(blank=True)
     slug = models.SlugField(unique=True)
-    dead_line = models.DateField(null=True, blank=True)
+    deadline = models.DateField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     check_box = models.BooleanField(default=False)
 
