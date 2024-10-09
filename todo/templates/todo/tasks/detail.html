@@ -1,0 +1,40 @@
+{% extends "todo/base.html" %}
+
+{% load static %}
+
+{% block title %}CheckMate | {{ task.title }}{% endblock title %} 
+
+{% block body %}
+<div class="clipboard">
+  <div class="clip"></div>
+  <div class="paper">
+    <div clas="info">
+      <h1>{{ task.title }}</h1>
+      <div class="dates">
+        <div>Creation date: {{ task.created_at }}</div>
+        <div>
+          Deadline:
+          {% if task.deadline is None %}
+          No deadline.
+          {% else %} 
+          {{ task.deadline }}
+          {% endif %}
+        </div>
+      </div>
+      <div class="description">
+        <p>
+          Description: 
+          {% if task.description|length > 0 %}
+          {{ task.description }}
+          {% else %} 
+          No description.
+          {% endif %}
+        </p>
+      </div>
+      <a href="{% url 'todo:task_list' %}">
+        <img src="{% static "imgs/boton.png" %}" alt="boton" width="35px"> 
+      </a>
+  </div>
+  </div>
+</div>
+{% endblock body %}

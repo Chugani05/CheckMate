@@ -1,0 +1,137 @@
+/* Estilos generales del body - Fondo de nevera */
+body {
+  font-family: "Shadows Into Light", cursive;
+  background-color: #f0f0f5;
+  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png"); /* Textura sutil de fondo */
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+/* Contenedor de clipboard */
+.clipboard {
+  position: relative;
+  background-color: #964b00;
+  width: 600px;
+  padding: 20px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+/* Papel dentro del clipboard */
+.paper {
+  background-color: rgb(255, 255, 255);
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Título y párrafo en el papel */
+h1,
+p {
+  margin: 5px;
+  padding: 5px;
+}
+
+/* Estilo de la pinza */
+.clip {
+  position: absolute;
+  top: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 25px;
+  background-color: #888;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Parte interna de la pinza */
+.clip::before {
+  content: "";
+  width: 50px;
+  height: 10px;
+  background-color: #666;
+  border-radius: 5px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  position: absolute;
+  bottom: 5px;
+}
+
+/* Título de la pizarra */
+.todo-header {
+  font-size: 2em;
+  color: #333;
+  text-align: center;
+  margin-bottom: 10px;
+  border-bottom: 2px dashed #4a90e2;
+  padding-bottom: 10px;
+}
+
+/* Lista de tareas en la pizarra */
+.todo-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  font-family: "Shadows Into Light", cursive;
+  font-size: 1.3em;
+  color: #333;
+  max-height: 60%;
+  overflow-y: auto;
+}
+
+/* Estilos de tareas individuales */
+.todo-item {
+  background-color: rgba(255, 255, 255, 0.8);
+  padding: 12px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  border: 2px dashed #4a90e2;
+  transition: background-color 0.3s;
+}
+
+.completed {
+  text-decoration: line-through;
+}
+
+.todo-item a {
+  text-decoration: none;
+  color: #333;
+}
+
+/* Estilo de scroll personalizado */
+.todo-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.todo-list::-webkit-scrollbar-thumb {
+  background-color: #4a90e2;
+  border-radius: 5px;
+}
+
+/* detail style */
+.dates {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.description {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.info a img {
+  rotate: 180deg;
+}

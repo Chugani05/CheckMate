@@ -1,0 +1,22 @@
+{% extends "todo/base.html" %}
+
+{% block title %}CheckMate | Home{% endblock title %}
+
+{% block body %}
+  <div class="clipboard">
+      <div class="clip"></div>
+      <div class="paper">
+        <h1 class="todo-header">CheckMate</h1>
+
+        <ul class="todo-list">
+          {% for task in tasks %}
+            <li class="todo-item {% if task.check_box == True %}completed{% endif %}">
+              <a href="{% url 'todo:task_detail' task.slug %}">{{ task }}</a>
+            </li>
+          {% empty %}
+          <li class="todo-item">No pending tasks</li>
+          {% endfor %}
+        </ul>
+      </div>
+  </div>
+{% endblock body %}
