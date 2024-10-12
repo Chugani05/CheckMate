@@ -8,15 +8,29 @@
       <div class="paper">
         <h1 class="todo-header">CheckMate</h1>
 
-        <ul class="todo-list">
+        <ul class="todo-list scroll">
           {% for task in tasks %}
-            <li class="todo-item {% if task.check_box == True %}completed{% endif %}">
-              <a href="{% url 'todo:task_detail' task.slug %}">{{ task }}</a>
+            <li class="todo-item {% if task.check_box == True %}completed{% endif %}" data-url="{% url 'todo:task_detail' task.slug %}">
+              {{ task }}
             </li>
           {% empty %}
-          <li class="todo-item">No pending tasks</li>
+            <li class="todo-item">No pending tasks</li>
           {% endfor %}
         </ul>
       </div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var todoItems = document.querySelectorAll('.todo-item');
+        todoItems.forEach(function(item) {
+            item.addEventListener('click', function() {
+                var url = item.getAttribute('data-url');
+                if (url) {
+                    window.location.href = url;
+                }
+            });
+        });
+    });
+  </script>
 {% endblock body %}

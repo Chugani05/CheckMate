@@ -1,8 +1,9 @@
-/* Estilos generales del body - Fondo de nevera */
+/* Estilos generales del body*/
 body {
-  font-family: "Shadows Into Light", cursive;
+  font-family: 'Patrick Hand', cursive;
   background-color: #f0f0f5;
-  background-image: url("https://www.transparenttextures.com/patterns/asfalt-dark.png"); /* Textura sutil de fondo */
+  background-image: url("./imgs/background.jpeg");
+  background-size: cover;
   margin: 0;
   padding: 0;
   display: flex;
@@ -39,30 +40,49 @@ p {
 /* Estilo de la pinza */
 .clip {
   position: absolute;
-  top: -25px;
+  top: -30px;
   left: 50%;
   transform: translateX(-50%);
-  width: 80px;
-  height: 25px;
+  width: 90px;
+  height: 35px;
   background-color: #888;
-  border-radius: 10px 10px 0 0;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+  border-radius: 12px 12px 0 0;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
   z-index: 2;
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
 }
 
 /* Parte interna de la pinza */
 .clip::before {
   content: "";
-  width: 50px;
-  height: 10px;
-  background-color: #666;
-  border-radius: 5px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
   position: absolute;
+  width: 55px;
+  height: 15px;
+  background-color: #666;
+  border-radius: 7px;
   bottom: 5px;
+  box-shadow: 0 2px 3px rgba(0, 0, 0, 0.4);
+}
+
+/* Detalles adicionales para mayor realismo */
+.clip::after {
+  content: "";
+  position: absolute;
+  width: 90%;
+  height: 5px;
+  background-color: #555;
+  top: 2px;
+  border-radius: 2px;
+  box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* Efecto de borde brillante */
+.clip::before,
+.clip::after {
+  background: linear-gradient(to bottom, #888, #555);
 }
 
 /* Título de la pizarra */
@@ -71,17 +91,17 @@ p {
   color: #333;
   text-align: center;
   margin-bottom: 10px;
-  border-bottom: 2px dashed #4a90e2;
+  border-bottom: 2px dashed #5ce24a;
   padding-bottom: 10px;
 }
 
 /* Lista de tareas en la pizarra */
 .todo-list {
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1.3em;
   list-style-type: none;
   padding: 0;
   margin: 0;
-  font-family: "Shadows Into Light", cursive;
-  font-size: 1.3em;
   color: #333;
   max-height: 60%;
   overflow-y: auto;
@@ -97,8 +117,9 @@ p {
   align-items: center;
   margin-bottom: 10px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  border: 2px dashed #4a90e2;
+  border: 2px dashed #5ce24a;
   transition: background-color 0.3s;
+  cursor: pointer;
 }
 
 .completed {
@@ -111,16 +132,15 @@ p {
 }
 
 /* Estilo de scroll personalizado */
-.todo-list::-webkit-scrollbar {
-  width: 8px;
+.scroll {
+  height: 15em;
+  line-height: 1em;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  width: 100%;
+  border: 0px solid;
 }
 
-.todo-list::-webkit-scrollbar-thumb {
-  background-color: #4a90e2;
-  border-radius: 5px;
-}
-
-/* detail style */
 .dates {
   margin-top: 10px;
   margin-bottom: 10px;
@@ -130,8 +150,4 @@ p {
 .description {
   margin-bottom: 10px;
   font-size: 20px;
-}
-
-.info a img {
-  rotate: 180deg;
 }
