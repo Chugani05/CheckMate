@@ -134,11 +134,9 @@ p {
 /* Estilo de scroll personalizado */
 .scroll {
   height: 15em;
-  line-height: 1em;
   overflow-x: hidden;
   overflow-y: scroll;
   width: 100%;
-  border: 0px solid;
 }
 
 .dates {
@@ -150,4 +148,5 @@ p {
 .description {
   margin-bottom: 10px;
   font-size: 20px;
+  text-align: justify;
 }
