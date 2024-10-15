@@ -1,16 +1,22 @@
 {% extends "todo/base.html" %}
 
+{% load static %}
+
 {% block title %}CheckMate | Home{% endblock title %}
 
 {% block body %}
   <div class="clipboard">
       <div class="clip"></div>
       <div class="paper">
+        <a href="{% url 'todo:add-task' %}">
+          <img src="{% static "imgs/plus.png" %}" alt="add new tasks boton" width="35px">
+        </a>
+
         <h1 class="todo-header">CheckMate</h1>
 
         <ul class="todo-list scroll">
           {% for task in tasks %}
-            <li class="todo-item {% if task.check_box == True %}completed{% endif %}" data-url="{% url 'todo:task_detail' task.slug %}">
+            <li class="todo-item {% if task.check_box == True %}completed{% endif %}" data-url="{% url 'todo:task-detail' task.slug %}">
               {{ task }}
             </li>
           {% empty %}

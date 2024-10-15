@@ -5,6 +5,7 @@ from . import views
 app_name = 'todo'
 
 urlpatterns = [
-    path('', views.task_list, name='task_list'),
-    path('<task_slug>', views.task_detail, name='task_detail'),
+    path('', views.task_list, name='task-list'),
+    path('tasks/<task_slug>', views.task_detail, name='task-detail'),
+    path('add-task', views.add_task, name='add-task')
 ]

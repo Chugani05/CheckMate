@@ -1,0 +1,20 @@
+{% extends "todo/base.html" %}
+
+{% load static %}
+
+{% block title %}CheckMate | Add task{% endblock title %} 
+
+{% block body %}
+<div class="clipboard">
+  <div class="clip"></div>
+  <div class="paper">
+    <form method="post">
+      {% csrf_token %}
+      {{ form }}
+      
+      <input type="submit" value="Enviar">
+    </form>
+  </div>
+</div>
+{% endblock body %}
+
