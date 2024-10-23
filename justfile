@@ -1,8 +1,5 @@
-# I ❤️ just
-# https://github.com/casey/just
-
 # Run development server.
-runserver:
+s:
     ./manage.py runserver
 
 # Open a Django interactive shell.
@@ -10,22 +7,22 @@ sh:
     ./manage.py shell
 
 # Check Django project
-check:
+c:
     ./manage.py check
 
 # Generate migrations
-mmigrate app="":
+mm app="":
     ./manage.py makemigrations {{ app }}
 
 # Migrate models
-migrate app="":
+m app="":
     ./manage.py migrate {{ app }}
 
 # https://medium.com/@mustahibmajgaonkar/how-to-reset-django-migrations-6787b2a1e723
 # https://stackoverflow.com/a/76300128
 # Remove migrations and database. Reset DB artefacts.
 [confirm("⚠️ All migrations and database will be removed. Continue? [yN]:")]
-reset-db:
+r-db:
     #!/usr/bin/env bash
     find . -path "*/migrations/*.py" ! -path "./.venv/*" ! -name "__init__.py" -delete
     find . -path "*/migrations/*.pyc" ! -path "./.venv/*" -delete
@@ -40,11 +37,6 @@ reset-db:
 @reset-admin password="admin":
     echo "from django.contrib.auth.models import User; u = User.objects.get(username='admin'); u.set_password('{{ password }}'); u.save()" | ./manage.py shell
     echo "✔ Reseted admin account with password '{{ password }}'"
-
-# Download teacher's code and sync with changes.
-[confirm("⚠️ Sync with teacher. All your changes will be discarded. Continue? [yN]:")]
-sync:
-    ghget -o . https://github.com/sdelquin/dsw/tree/main/ut2/nanobits
 
 # Open sqlite project database
 db:
