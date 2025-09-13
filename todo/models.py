@@ -7,6 +7,7 @@ class Task(models.Model):
     slug = models.SlugField(unique=True, max_length=100)
     deadline = models.DateField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
     check_box = models.BooleanField(default=False)
 
     def __str__(self):

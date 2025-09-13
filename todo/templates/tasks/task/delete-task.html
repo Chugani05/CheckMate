@@ -1,0 +1,46 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+
+
+{% block title %}CheckMate | Remove task{% endblock title %} 
+
+{% block body %}
+<div class="clipboard">
+    <div class="clip"></div>
+    <div class="paper">
+        <h1 >Task Deleted Successfully!</h1>
+        <h2>The task '{{ task }}' has been removed from the list.</h2>
+        <hr>
+        <h3>Would you like to go back to the task list or create a new task?</h3>
+    <div>
+        <a href="{% url 'todo:task-list' %}">
+            <input  type="submit" value="Go back to Task List" class="btn-submit">
+        </a>
+        <a href="{% url 'todo:add-task' %}">
+            <input  type="submit" value="Create new task" class="btn-submit">
+        </a>
+    </div>
+</div>
+{% endblock body %}
+
+{% block extra_css %}
+<style>
+    .btn-submit {
+        background: #37b626;
+        color: #fff;
+        border: none;
+        padding: 0.8rem 1.5rem;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        display: block;
+        margin: 1rem auto 0;
+        transition: background 0.3s ease;
+    }
+
+    .btn-submit:hover {
+        background: #26811a;
+    }
+</style>
+{% endblock extra_css %}

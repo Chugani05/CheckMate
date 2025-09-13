@@ -1,4 +1,4 @@
-{% extends "todo/base.html" %}
+{% extends "tasks/base.html" %}
 
 {% load static %}
 
@@ -32,9 +32,56 @@
         </p>
       </div>
       <a href="{% url 'todo:task-list' %}">
-        <img src="{% static "imgs/arrow.png" %}" alt="back arrow boton" width="35px"> 
+        <img src="{% static "imgs/arrow.png" %}" alt="back arrow boton" width="35px" style="transform: rotate(180deg);"> 
       </a>
     </div>
   </div>
 </div>
 {% endblock body %}
+
+{% block extra_css %}
+<style>
+.info h1 {
+  font-size: 2rem;
+  margin-bottom: 15px;
+  border-bottom: 2px solid #ddd;
+  padding-bottom: 10px;
+  color: #2c3e50;
+}
+
+.dates {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.dates div {
+  margin: 5px 0;
+}
+
+.description {
+  border-radius: 6px;
+  padding: 15px;
+  max-height: 150px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.scroll::-webkit-scrollbar-thumb {
+  background: #bbb;
+  border-radius: 3px;
+}
+
+a img {
+  transition: transform 0.2s ease;
+}
+a img:hover {
+  transform: rotate(180deg) scale(1.1);
+}
+</style>
+{% endblock extra_css %}

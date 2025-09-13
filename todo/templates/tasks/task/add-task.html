@@ -1,0 +1,82 @@
+{% extends "tasks/base.html" %}
+{% load static %}
+
+{% block title %}CheckMate | Add task{% endblock title %} 
+
+{% block body %}
+<div class="clipboard">
+  <div class="clip"></div>
+  <div class="paper">
+
+    <a href="{% url 'todo:task-list' %}">
+      <img src="{% static "imgs/ex.png" %}" alt="back to home boton" width="35px">
+    </a>
+
+    <h1>Create new task</h1>
+    <form method="post">
+      {% csrf_token %}
+      <div class="form-fields">
+        {{ form.as_p }}
+      </div>
+      <input type="submit" value="Add new task" class="btn-submit">
+    </form>
+  </div>
+</div>
+{% endblock body %}
+
+{% block extra_css %}
+<style>
+  .paper h1 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+
+  .form-fields p {
+    margin-bottom: 1rem;
+  }
+
+  .form-fields label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+
+  .form-fields input[type="text"],
+  .form-fields textarea,
+  .form-fields input[type="date"] {
+    width: 100%;
+    padding: 0.6rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: border 0.2s ease-in-out;
+  }
+
+  .form-fields input:focus,
+  .form-fields textarea:focus {
+    border-color: #37b626;
+    outline: none;
+    box-shadow: 0 0 5px rgba(99, 255, 107, 0.3);
+  }
+
+  .btn-submit {
+    background: #37b626;
+    color: #fff;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: block;
+    margin: 1rem auto 0;
+    transition: background 0.3s ease;
+  }
+
+  .btn-submit:hover {
+    background: #26811a;
+  }
+</style>
+{% endblock extra_css %}
+
+

@@ -1,4 +1,4 @@
-{% extends "todo/base.html" %}
+{% extends "tasks/base.html" %}
 
 {% load static %}
 
@@ -6,7 +6,7 @@
 
 {% block body %}
   <div class="clipboard">
-      <div class="clip"></div>
+    <div class="clip"></div>
       <div class="paper">
         <a href="{% url 'todo:add-task' %}">
           <img src="{% static "imgs/plus.png" %}" alt="add new tasks boton" width="35px">
@@ -18,6 +18,14 @@
           {% for task in tasks %}
             <li class="todo-item {% if task.check_box == True %}completed{% endif %}" data-url="{% url 'todo:task-detail' task.slug %}">
               {{ task }}
+              <div>
+                <a href="{% url 'todo:edit-task' task.slug %}">
+                  <img src="{% static "imgs/pen.png" %}" alt="back to home boton" width="35px">
+                </a>
+                <a href="{% url 'todo:delete-task' task.slug %}">
+                  <img src="{% static "imgs/bin.png" %}" alt="back to home boton" width="35px">
+                </a>
+              </div>
             </li>
           {% empty %}
             <li class="todo-item">No pending tasks</li>
